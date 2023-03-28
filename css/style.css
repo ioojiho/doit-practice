@@ -1,0 +1,107 @@
+
+/* 0328: 전체 레이아웃을 지정함. 지정 후에는 background-color로 영역 잘 나눠졌나 확인하기 
+*에서의 주로 쓰이는 요소와, 그 이외 영역들에서의 주로 쓰이는 요소(width 100%, height) 를 배움! */
+/* 주석활용: 각 영역의 앞에 주석을 붙이자! (수정의 용이성) */
+/*단축키의 활용을 잘하자 >,<*/
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  background-color: black;
+}
+/* 전체선택자에서 margin과 padding 값을 0으로 설정하고, 
+box-sizing을 border-box로 설정해서 박스 크기 계산이 쉽게 함 */
+
+#container {
+  margin: 0 auto; /*화면 중앙에 배치*/
+  width: 1200px;
+  background-color: darkgray;
+}
+/* Q1. 왜 하필 margin을 0, auto로 뒀을까? 
+중앙배치는 text-align을 사용하면 되지 않을까?
+전체선택자에서 margin, padding 설정했는데 왜 margin을 또 설정할까?
+그냥 아무 설정도 안해도 되지 않나 하는 생각? 
+Q2. 왜 width만 설정했을까? 
+-> height는 콘텐츠 크기에 따라 바뀔 수 있는 영역이라 width만 설정함
+*/
+
+
+/*header*/
+header{
+  width: 100%;
+  height: 100px;
+  background-color: red;
+}
+/* Q. width는 퍼센트, height는 100px로 표현한 이유?
+A. 우선 header는 같은 높이를 공유하는 logo, menu의 모임이다!
+따라서 정해진 height값은 지정해주되, width는 container의 부모 요소인 container 너비와 같이 설정해주면 된다 */
+
+#logo{
+  float: left;
+  width: 250px;
+  height: 100px; 
+  background-color: hotpink;
+}
+/* Q1. float를 저렇게 설정하면 뭔가 이상하게 날아다니지 않을까? display를 사용하면 안되나
+Q2. height를 꼭 설정해야할까? 부모 요소에 이미 있는데.. */
+
+nav{
+  float: right;
+  width: 900px;
+  height: 100px;
+  background-color: pink;
+}
+/*Q1. logo와 nav를 합한 width는 1150이다. 나머지 50은? & 만약 딱 맞거나 넘치면 어떻게 될까?
+-> 확인해본 결과 중간에 남는 50은 그냥 비어있다!!! header의 background color가 보였음 */
+
+
+/* slideShow */
+#slideShow{
+  clear: both;
+  width: 100%;
+  height: 300px;
+  background-color: yellow;
+  overflow: hidden;
+}
+/* Q1. clear: both 가 몬지.. 플로팅 해제가 먼지!!!
+아~ header에서 float를 설정해줘서 해제하는거구나!!!!! 근데 왜 clear: both 쓰는가?..
+아~ 한족만 하면 안되구나;;
+overflow: hidden이 뭔지 다시한번 공부하깅! */
+
+
+#contents{
+  width: 100%;
+  height: 300px;
+  background-color: blue;
+}
+
+#topMenu{
+  float: left;
+  width: 600px;
+  height: 100%;
+  background-color: green;
+}
+/* 위에서는 height 100px 썼는데 왜 여기선 100% 쓰는지?*/
+
+#links{
+  float: right;
+  width: 600px;
+  height: 100%;
+  background-color: skyblue;
+}
+/* float: right를 주석처리하면? -> float가 topmenu와 겹쳐져서 사라진다 
+float: left로 바꾼다면?: float right와 같음! */
+
+footer {
+  width: 90%;
+  height: 100px;
+  background-color: mintcream;
+}
+/*Q. 여기서 float 해제 왜안쓰는지!! 
+그리고 width 90으로 봤을때
+float 해제안함: 왼쪽에 달라붙어있고, container 배경색 나타남
+float: left 설정: 왼쪽에 달라붙어있고, container 배경색 없음
+float: right 설정: 오른쪽에 달라붙어있고, container 배경색 없음 
+why?;;
+-> notion에 정리! */
